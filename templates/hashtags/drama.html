@@ -1,0 +1,19 @@
+{% load static %}
+{% include 'components/header.html' %}
+
+<link rel="stylesheet" href="{% static 'hashtags.css' %}">
+<link rel="stylesheet" href="{% static 'books.css' %}">
+<br><br><br><br><br>
+
+<div class="products">
+    {% for product in drama %}
+    <div class="card">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.price }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% include 'components/footer.html' %}

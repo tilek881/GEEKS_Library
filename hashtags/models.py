@@ -7,9 +7,10 @@ class Tag(models.Model):
         return self.name
 
 class Product(models.Model):
-    name = models.CharField(max_length=50)
-    tags = models.ManyToManyField(Tag, related_name='products')
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    name = models.CharField(max_length=100)
+    price = models.PositiveIntegerField(default=100)
+    tags = models.ManyToManyField(Tag)
+
 
     def __str__(self):
         return self.name

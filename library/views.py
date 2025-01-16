@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from . import models
 
-#Список фильмов
+
 def books_lists(request):
     if request.method == 'GET':
         books_list = models.Books.objects.all().order_by('-id')

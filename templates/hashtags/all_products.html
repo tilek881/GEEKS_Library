@@ -1,0 +1,23 @@
+{% load static %}
+{% include 'components/header.html' %}
+
+<link rel="stylesheet" href="{% static 'hashtags.css' %}">
+<link rel="stylesheet" href="{% static 'books.css' %}">
+<br><br><br><br><br>
+
+<div class="products">
+    {% for product in products %}
+    <div class="card">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.price }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="buttons">
+    <button><a href="{% url 'fairy_tale' %}">Сказки</a></button>
+    <button><a href="{% url 'fantasy' %}">Фантастика</a></button>
+    <button><a href="{% url 'drama' %}">Драма</a></button>
+</div>
+
+{% include 'components/footer.html' %}
