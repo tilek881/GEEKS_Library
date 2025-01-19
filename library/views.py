@@ -1,22 +1,41 @@
-from django.shortcuts import render , get_object_or_404
 from django.http import HttpResponse
 from datetime import datetime
 from . import models
+from django.views import generic
 
 
-def books_lists(request):
-    if request.method == 'GET':
-        books_list = models.Books.objects.all().order_by('-id')
-        context = {'books_lists': books_list}
-        return render(request, template_name='book.html', context = context)
+class SearchView(generic.ListView):
+    template_name = 'book.html'
+    context_object_name = 'book_list'
 
-def book_detail(request, id):
-    if request.method == 'GET':
-        book_id = get_object_or_404(models.Books, id=id)
-        context = {'book_id': book_id}
-        return render(request, template_name='book_detail.html', context = context)
+    def get_queryset(self):
+        query = self.request.GET.get('q', '')
+        return models.Books.objects.filter(title__icontains=query)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.get('q', '')
+        context['q'] = query
+        return context
 
 
+
+
+
+
+class BooksListView(generic.ListView):
+    template_name = 'book.html'
+    context_object_name = 'books_lists'
+    model = models.Books
+
+    def get_queryset(self):
+        return self.model.objects.all().order_by('-id')
+
+
+class BookDetailView(generic.DetailView):
+    template_name = 'book_detail.html'
+    context_object_name = 'book_id'
+    model = models.Books
 
 
 def about_me(request):

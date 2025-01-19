@@ -2,30 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Список задач</title>
 </head>
 <body>
 <ul>
-  {% for i in todo_list %}
-  <li>
-    <h1>{{ i.task }}</h1>
-    <p>{{ i.checked }}</p>
-    <button><a href=""></a>Подробнее</button>
-    <button><a href=""></a>Удалить</button>
-    <button><a href=""></a>Изменить</button>
-  </li>
-  {% endfor %}
+    {% for i in todo_list %}
+    <li>
+        <h1>{{ i.task }}</h1>
+        <p>{{ i.checked }}</p>
+        <button>
+            <a href="{% url 'todo_detail' i.pk %}">Подробнее</a>
+        </button>
+        <button>
+            <a href="{% url 'delete_todo' i.pk %}">Удалить</a>
+        </button>
+        <button>
+            <a href="{% url 'create_todo' %}">Добавить задачу</a>
+        </button>
+    </li>
+    {% endfor %}
 </ul>
 </body>
 </html>

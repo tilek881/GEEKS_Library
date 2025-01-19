@@ -1,11 +1,9 @@
 from django.urls import path
-from . import views
-
+from .views import AllProductsView, FairyTaleView, FantasyView, DramaView
 
 urlpatterns = [
-    path('all_product/' , views.all_products, name='all_products'),
-    path('fairy_tale/', views.fairy_tale, name='fairy_tale'),
-    path('fantasy/', views.fantasy, name='fantasy'),
-    path('drama/', views.drama, name='drama'),
-
+    path('all_product/', AllProductsView.as_view(), name='all_products'),
+    path('fairy_tale/', FairyTaleView.as_view(), name='fairy_tale'),
+    path('fantasy/', FantasyView.as_view(), name='fantasy'),
+    path('drama/', DramaView.as_view(), name='drama'),
 ]
