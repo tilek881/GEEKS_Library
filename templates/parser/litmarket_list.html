@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список фильмов</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'list.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Спарсенные фильмы</h1>
+        <div class="movie-list">
+            {% for i in litmarket %}
+            <div class="movie">
+                <p class="movie-title">{{ i.title }}</p>
+                <a class="movie-link" href="{{ i.href }}" target="_blank">Перейти к фильму</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

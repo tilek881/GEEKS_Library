@@ -1,7 +1,6 @@
 from django.apps import AppConfig
 
 
-
-class HashtagsConfig(AppConfig):
+class ParserLitmarketConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'hashtags'
+    name = 'parser_litmarket'

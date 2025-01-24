@@ -20,9 +20,6 @@ class SearchView(generic.ListView):
 
 
 
-
-
-
 class BooksListView(generic.ListView):
     template_name = 'book.html'
     context_object_name = 'books_lists'

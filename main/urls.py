@@ -8,6 +8,8 @@ urlpatterns = [
     path('', include('library.urls')),
     path('' , include('hashtags.urls')),
     path('' , include('todo.urls')),
+    path('' , include('parser_litmarket.urls')),
+
 
 
 ]
