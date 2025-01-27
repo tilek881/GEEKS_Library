@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'library',
     'hashtags',
     'todo',
-    'parser_litmarket'
+    'parser_litmarket',
+    'register'
 ]
 
 
