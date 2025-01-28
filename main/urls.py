@@ -9,7 +9,8 @@ urlpatterns = [
     path('' , include('hashtags.urls')),
     path('' , include('todo.urls')),
     path('' , include('parser_litmarket.urls')),
-    path('', include('register.urls')),
+    path('recipes/', include('recipes.urls')),
+
 
 
 

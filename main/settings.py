@@ -1,6 +1,7 @@
+from logging import DEBUG
 from pathlib import Path
 import os
-
+from dotenv import load_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -11,12 +12,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-u8juzot@nj^qp%erj5!j)vp0m*t9d8p+hh!lvd2g^d0c0ssxc('
-
+load_dotenv()
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-ALLOWED_HOSTS = []
+if os.getenv('DEBUG') == 'on':
+    DEBUG = True
+else:
+    DEBUG = False
+
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -33,7 +39,8 @@ INSTALLED_APPS = [
     'hashtags',
     'todo',
     'parser_litmarket',
-    'register'
+    'recipes',
+
 ]
 
 
@@ -115,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR / "media")
 STATICFILES_DIRS = [BASE_DIR / "static"]
 # Default primary key field type
